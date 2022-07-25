@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from tqdm import tqdm
 
-from base.BaseEnviroment import BaseEnvironment
+from src.base.BaseEnviroment import BaseEnvironment
 from src.actors.random_actors.RandomActor import RandomActor
 from src.config import hp_second, hp_first
 from src.factories.first_gen.FirstGenList import all_first_gen

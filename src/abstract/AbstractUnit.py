@@ -1,6 +1,5 @@
 from typing import List
 
-from base.BaseUnit import BaseUnit
 from src.abstract.RenameMe import MapObject, AliveObject, WithId
 
 
@@ -13,5 +12,5 @@ class AbstractUnit(AliveObject, MapObject, WithId):
         raise NotImplementedError()
 
     # Todo it is not unit it is hero too
-    def get_attacked_units(self, units, heroes) -> List[BaseUnit]:
+    def get_attacked_units(self, units, heroes):
         pass

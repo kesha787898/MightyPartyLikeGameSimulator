@@ -1,7 +1,7 @@
 import random
 from typing import List
 
-from abstract.AbstractEnviroment import AbstractEnvironment
+from src.abstract.AbstractEnviroment import AbstractEnvironment
 from src.abstract.AbstractActor import AbstractActor
 from src.abstract.AbstractHeroFactory import AbstractHeroFactory
 from src.abstract.AbstractUnitFactory import AbstractUnitFactory

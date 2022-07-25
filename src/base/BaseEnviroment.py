@@ -1,6 +1,6 @@
 from typing import List
 
-from abstract.AbstractEnviroment import AbstractEnvironment
+from src.abstract.AbstractEnviroment import AbstractEnvironment
 from src.abstract.AbstractHero import AbstractHero
 from src.abstract.AbstractMap import AbstractMap
 from src.abstract.AbstractUnit import AbstractUnit

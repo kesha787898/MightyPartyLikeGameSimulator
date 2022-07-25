@@ -1,4 +1,4 @@
-from abstract.AbstractEnviroment import AbstractEnvironment
+from src.abstract.AbstractEnviroment import AbstractEnvironment
 
 
 class AbstractActor:
