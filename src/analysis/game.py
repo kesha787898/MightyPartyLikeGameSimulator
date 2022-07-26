@@ -1,4 +1,4 @@
-from actors.random_actors.RandomActor import RandomActor
+from src.actors.random_actors.RandomActor import RandomActor
 from config import hp_first
 from factories.first_gen.FirstGenList import all_first_gen
 from factories.first_gen.OnlyHpHeroFactory import OnlyHpHeroFactory

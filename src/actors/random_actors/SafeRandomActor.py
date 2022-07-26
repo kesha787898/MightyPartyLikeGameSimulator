@@ -1,6 +1,6 @@
 import random
 
-from abstract.AbstractEnviroment import AbstractEnvironment
+from src.abstract.AbstractEnviroment import AbstractEnvironment
 from src.actors.random_actors.RandomActor import RandomActor
 
 

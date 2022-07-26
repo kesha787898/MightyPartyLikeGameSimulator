@@ -1,4 +1,4 @@
-from base.BaseUnit import BaseUnit
+from src.base.BaseUnit import BaseUnit
 from src.abstract.AbstractUnitFactory import AbstractUnitFactory
 from src.config import mag_hp, mag_base_attack_power, priest_hp, priest_base_attack_power, archer_hp, \
     archer_base_attack_power, warrior_hp, warrior_base_attack_power, knight_hp, knight_base_attack_power, druid_hp, \

@@ -1,6 +1,6 @@
 from tqdm import tqdm
 
-from abstract.AbstractActor import AbstractActor
+from src.abstract.AbstractActor import AbstractActor
 from src.base.BaseEnviroment import BaseEnvironment
 
 

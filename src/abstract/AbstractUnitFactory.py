@@ -1,4 +1,4 @@
-from abstract.AbstractUnit import AbstractUnit
+from src.abstract.AbstractUnit import AbstractUnit
 
 
 # Todo it is base! not abstract
