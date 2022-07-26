@@ -1,4 +1,3 @@
-import warnings
 from typing import List
 
 from src.abstract.AbstractUnit import AbstractUnit
@@ -10,7 +9,7 @@ class BaseUnit(AbstractUnit):
         self.team_id = team_id
         self.base_attack_power = base_attack_power
         self.name = name
-        self.type = None
+        self.unit_type = None
 
     def attack(self, units: List[AbstractUnit]):
         for unit in units:
@@ -27,52 +26,27 @@ class BaseUnit(AbstractUnit):
     def __repr__(self):
         return str(self) + '\n'
 
-
-class RangedUnit(BaseUnit):
-
-    def __init__(self, team_id: int, hp: int, base_attack_power: int, name: str):
-        super().__init__(team_id, hp, base_attack_power, name)
-        self.type = "Ranged"
-
-    def get_attacked_units(self, all_units, heroes) -> List[AbstractUnit]:
-        units_on_line = [i for i in filter(lambda unit: unit.y == self.y, all_units)]
-        opps_on_line = list(filter(lambda unit: unit.team_id != self.team_id, units_on_line))
-        opps = sorted(opps_on_line, key=lambda opp: opp.x)
-        if not opps:
-            opp_hero = [hero for hero in heroes if hero.team_id != self.team_id][0]
-            return [opp_hero]
-        elif self.team_id == 0:
-            return [opps[0]]
-        elif self.team_id == 1:
-            return [opps[-1]]
-        else:
-            warnings.warn("unreachable code")
-            return []
-
-
-class MeleeUnit(BaseUnit):
-
-    def __init__(self, team_id: int, hp: int, base_attack_power: int, name: str):
-        super().__init__(team_id, hp, base_attack_power, name)
-        self.type = "Melee"
-
-    def get_attacked_units(self, all_units, heroes) -> List[AbstractUnit]:
-        units_on_line = [i for i in filter(lambda unit: unit.y == self.y, all_units)]
+    def get_attacked_units(self, all_units: List[AbstractUnit], heroes) -> List[AbstractUnit]:
+        units_on_line = sorted([i for i in filter(lambda unit: unit.y == self.y, all_units)], key=lambda unit: unit.x)
         opps_on_line = list(filter(lambda unit: unit.team_id != self.team_id, units_on_line))
         friend_units = list(filter(lambda unit: unit.team_id == self.team_id, units_on_line))
-        opps = sorted(opps_on_line, key=lambda opp: opp.x)
-        if not opps:
+        if not opps_on_line:
             opp_hero = [hero for hero in heroes if hero.team_id != self.team_id][0]
             return [opp_hero]
-        elif self.team_id == 0:
-            if friend_units and friend_units[-1].x > self.x:
-                return []
+        elif self.unit_type == "ranged":
+            return [opps_on_line[0]]
+        elif self.unit_type == "melee":
+            if self.team_id == 0:
+                if friend_units and friend_units[-1].x > self.x:
+                    return []
+                else:
+                    return [opps_on_line[0]]
+            elif self.team_id == 1:
+                if friend_units and friend_units[0].x < self.x:
+                    return []
+                else:
+                    return [opps_on_line[-1]]
             else:
-                return [opps[0]]
-        elif self.team_id == 1:
-            if friend_units and friend_units[0].x < self.x:
-                return []
-            else:
-                return [opps[-1]]
+                raise RuntimeError("unreachable code")
         else:
-            return []
+            raise RuntimeError("unreachable code")

@@ -23,6 +23,12 @@ class AbstractMap:
     def get_squares(self) -> List[List[AbstractSquare]]:
         raise NotImplementedError()
 
+    def get_size_x(self) -> int:
+        raise NotImplementedError()
+
+    def get_size_y(self) -> int:
+        raise NotImplementedError()
+
     def __str__(self) -> str:
         s = ""
         for y in range(len(self.get_squares()[0])):

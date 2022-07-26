@@ -67,3 +67,9 @@ class BaseMap(AbstractMap):
 
     def get_squares(self) -> List[List[AbstractSquare]]:
         return self.squares
+
+    def get_size_x(self) -> int:
+        return len(self.get_squares())
+
+    def get_size_y(self) -> int:
+        return len(self.get_squares()[0])

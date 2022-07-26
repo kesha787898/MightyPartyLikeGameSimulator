@@ -13,4 +13,5 @@ class AbstractUnit(AliveObject, MapObject, WithId):
 
     # Todo it is not unit it is hero too
     def get_attacked_units(self, units, heroes):
-        pass
+        raise NotImplementedError()
+

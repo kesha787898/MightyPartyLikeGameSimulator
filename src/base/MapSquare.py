@@ -22,7 +22,7 @@ class MapSquare(AbstractSquare):
         if self.status == filled:
             self.status = empty
         else:
-            raise Exception("place filled")
+            raise Exception("place not filled")
 
     def is_filled(self):
         return self.status == filled

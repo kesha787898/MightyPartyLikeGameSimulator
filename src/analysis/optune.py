@@ -1,4 +1,9 @@
 import optuna
+
+from actors.random_actors.RandomActor import RandomActor
+from config import hp_first
+from factories.first_gen.FirstGenList import all_first_gen
+from factories.first_gen.OnlyHpHeroFactory import OnlyHpHeroFactory
 from src import config
 from src.play.Game import AbstractGame
 
@@ -18,7 +23,8 @@ def objective(trial):
     config.druid_base_attack_power = trial.suggest_int('druid_base_attack_power', 1, 50)
     config.hp_first = 100
     config.hp_second = config.hp_first
-    results = AbstractGame().play_games(3000)
+    results = AbstractGame(RandomActor(0, OnlyHpHeroFactory(hp_first), all_first_gen),
+                           RandomActor(1, OnlyHpHeroFactory(hp_first), all_first_gen)).play_games(3000)
     winners = []
     hps0 = []
     hps1 = []
